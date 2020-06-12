@@ -95,7 +95,7 @@ public class StreamerServlet extends HttpServlet {
 		String online = request.getParameter("online");
 		Integer subscribers = parseToNumber(request.getParameter("subscribers"));
 		Integer followers = parseToNumber(request.getParameter("followers"));
-		Integer category_id = parseToNumber(request.getParameter("category_id"));
+		String category_id = request.getParameter("category_id");
 		System.out.println(name + online + subscribers + followers + category_id);
 		Streamer newStreamer = new Streamer(name, online, subscribers, followers, category_id);
 		streamerDao.insertStreamer(newStreamer);
@@ -108,7 +108,7 @@ public class StreamerServlet extends HttpServlet {
 		String online = request.getParameter("online");
 		int subscribers = Integer.parseInt(request.getParameter("subscribers"));
 		Integer followers = Integer.parseInt(request.getParameter("followers"));
-		Integer category_id = Integer.parseInt(request.getParameter("category_id"));
+		String category_id = request.getParameter("category_id");
 
 		Streamer streamer = new Streamer(id, name, online, subscribers, followers, category_id);
 		streamerDao.updateStreamer(streamer);

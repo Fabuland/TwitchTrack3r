@@ -46,7 +46,7 @@ public class StreamerDao {
 			preparedStatement.setString(2, streamer.getOnline());
 			preparedStatement.setInt(3, streamer.getSubscribers());
 			preparedStatement.setInt(4, streamer.getFollowers());
-			preparedStatement.setInt(5, streamer.getCategory_id());
+			preparedStatement.setString(5, streamer.getCategory_id());
 			System.out.println(preparedStatement);
 			preparedStatement.executeUpdate();
 		} catch (SQLException e) {
@@ -62,7 +62,7 @@ public class StreamerDao {
 			statement.setString(2, streamer.getOnline());
 			statement.setInt(3, streamer.getSubscribers());
 			statement.setInt(4, streamer.getFollowers());
-			statement.setInt(5, streamer.getCategory_id());
+			statement.setString(5, streamer.getCategory_id());
 			statement.setInt(6, streamer.getId());
 
 			rowUpdated = statement.executeUpdate() > 0;
@@ -85,7 +85,7 @@ public class StreamerDao {
 				String online = rs.getString("online");
 				int subscribers = rs.getInt("subscribers");
 				int followers = rs.getInt("followers");
-				int category_id = rs.getInt("category_id");
+				String category_id = rs.getString("category_id");
 				streamer = new Streamer(id, name, online, subscribers, followers, category_id);
 			}
 		} catch (SQLException e) {
@@ -108,7 +108,7 @@ public class StreamerDao {
 				String online = rs.getString("online");
 				int subscribers = rs.getInt("subscribers");
 				int followers = rs.getInt("followers");
-				int category_id = rs.getInt("category_id");
+				String category_id = rs.getString("category_id");
 				streamers.add(new Streamer(id, name, online, subscribers, followers, category_id));
 			}
 		} catch (SQLException e) {

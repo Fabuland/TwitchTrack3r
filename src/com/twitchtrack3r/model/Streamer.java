@@ -6,11 +6,11 @@ public class Streamer {
 	private String online;
 	private int subscribers;
 	private int followers;
-	private int category_id;
+	private String category_id;
 	
 	
 
-	public Streamer(int id, String name, String online, int subscribers, int followers, int category_id) {
+	public Streamer(int id, String name, String online, int subscribers, int followers, String category_id) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -22,7 +22,7 @@ public class Streamer {
 	
 	
 
-	public Streamer(String name, String online, int subscribers, int followers, int category_id) {
+	public Streamer(String name, String online, int subscribers, int followers, String category_id) {
 		super();
 		this.name = name;
 		this.online = online;
@@ -73,11 +73,11 @@ public class Streamer {
 		this.followers = followers;
 	}
 
-	public int getCategory_id() {
+	public String getCategory_id() {
 		return category_id;
 	}
 
-	public void setCategory_id(int category_id) {
+	public void setCategory_id(String category_id) {
 		this.category_id = category_id;
 	}
 
