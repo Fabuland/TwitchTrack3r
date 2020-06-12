@@ -85,7 +85,7 @@ public class StreamerServlet extends HttpServlet {
 		int id = Integer.parseInt(request.getParameter("id"));
 		Streamer existingStreamer = streamerDao.selectStreamer(id);
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/streamer-form.jsp");
-		request.setAttribute("Streamer", existingStreamer);
+		request.setAttribute("streamer", existingStreamer);
 		dispatcher.forward(request, response);
 
 	}

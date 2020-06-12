@@ -19,7 +19,7 @@ public class StreamerDao {
 	private static final String insertStreamerSQL = "INSERT INTO streamer"
 			+ "  (name, online, subscribers, followers, category_id) VALUES " + " (?, ?, ?, ?, ?);";
 
-	private static final String selectStreamerByID = "select id,name,online,subscribers,followers from streamer where id = ?";
+	private static final String selectStreamerByID = "select id,name,online,subscribers,followers,category_id from streamer where id = ?";
 	private static final String selectAllStreamers = "select * from streamer";
 	private static final String deleteStreamerSQL = "delete from streamer where id = ?;";
 	private static final String updateStreamerSQL = "update streamer set name = ?, online = ?, subscribers = ?, followers = ?, category_id = ? where id = ?;";
