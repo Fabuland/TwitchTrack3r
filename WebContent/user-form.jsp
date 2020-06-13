@@ -15,6 +15,9 @@
 	crossorigin="anonymous">
 <link rel="stylesheet" type="text/css" href="./resources/css/style.css">
 <style>
+body {
+  font-family: Verdana;
+}
 </style>
 </head>
 <body id="bg">
@@ -25,7 +28,7 @@
 			style="background-color: black">
 			<div class="mx-5">
 				<a href="<%=request.getContextPath()%>/listStreamer" class="navbar-brand">
-					<img src="https://i.imgur.com/b5GO8xB.png" alt="logo">
+					<img src="https://i.imgur.com/b5GO8xB.png" alt="logo" width="100px" height="60px">
 				</a>
 			</div>
 

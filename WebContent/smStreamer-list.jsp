@@ -41,7 +41,7 @@ color:purple;
 			style="background-color: black">
 			<div class="mx-5">
 				<a href="<%=request.getContextPath()%>/smListStreamer" class="navbar-brand">
-					<img src="https://i.imgur.com/b5GO8xB.png" alt="logo">
+					<img src="https://i.imgur.com/b5GO8xB.png" alt="logo" width="100px" height="60px">
 				</a>
 			</div>
 
