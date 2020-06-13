@@ -11,8 +11,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.twitchtrack3r.dao.LoginDao;
 import com.twitchtrack3r.dao.StreamerDao;
+import com.twitchtrack3r.dao.UserDao;
+import com.twitchtrack3r.model.Login;
 import com.twitchtrack3r.model.Streamer;
+import com.twitchtrack3r.model.User;
 
 /**
  * Servlet implementation class StreamerServlet
@@ -21,9 +25,13 @@ import com.twitchtrack3r.model.Streamer;
 public class StreamerServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private StreamerDao streamerDao;
+	private UserDao userDao;
+	private LoginDao loginDao;
 
 	public void init() {
 		streamerDao = new StreamerDao();
+		userDao = new UserDao();
+		loginDao = new LoginDao();
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -42,23 +50,50 @@ public class StreamerServlet extends HttpServlet {
 
 		try {
 			switch (action) {
-			case "/new":
-				showNewForm(request, response);
+			case "/newStreamer":
+				showNewStreamerForm(request, response);
 				break;
-			case "/insert":
+			case "/insertStreamer":
 				insertStreamer(request, response);
 				break;
-			case "/delete":
+			case "/deleteStreamer":
 				deleteStreamer(request, response);
 				break;
-			case "/edit":
-				showEditForm(request, response);
+			case "/editStreamer":
+				showEditStreamerForm(request, response);
 				break;
-			case "/update":
+			case "/updateStreamer":
 				updateStreamer(request, response);
 				break;
-			default:
+			case "/newUser":
+				showNewUserForm(request, response);
+				break;
+			case "/insertUser":
+				insertUser(request, response);
+				break;
+			case "/deleteUser":
+				deleteUser(request, response);
+				break;
+			case "/editUser":
+				showEditUserForm(request, response);
+				break;
+			case "/updateUser":
+				updateUser(request, response);
+				break;
+			case "/listUser":
+				listUser(request, response);
+				break;
+			case "/listStreamer":
 				listStreamer(request, response);
+				break;
+			case "/loginAccess":
+				loginWeb(request, response);
+				break;
+			case "/smListStreamer":
+				smListStreamer(request, response);
+				break;
+			default:
+				sendToLogin(request, response);
 				break;
 			}
 		} catch (SQLException ex) {
@@ -73,14 +108,22 @@ public class StreamerServlet extends HttpServlet {
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/streamer-list.jsp");
 		dispatcher.forward(request, response);
 	}
+	
+	private void smListStreamer(HttpServletRequest request, HttpServletResponse response) 
+			throws SQLException, IOException, ServletException {
+		List<Streamer> listStreamer = streamerDao.selectAllStreamers();
+		request.setAttribute("listStreamer", listStreamer);
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/smStreamer-list.jsp");
+		dispatcher.forward(request, response);
+	}
 
-	private void showNewForm(HttpServletRequest request, HttpServletResponse response)
+	private void showNewStreamerForm(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/streamer-form.jsp");
 		dispatcher.forward(request, response);
 	}
 
-	private void showEditForm(HttpServletRequest request, HttpServletResponse response)
+	private void showEditStreamerForm(HttpServletRequest request, HttpServletResponse response)
 			throws SQLException, ServletException, IOException {
 		int id = Integer.parseInt(request.getParameter("id"));
 		Streamer existingStreamer = streamerDao.selectStreamer(id);
@@ -121,6 +164,88 @@ public class StreamerServlet extends HttpServlet {
 		response.sendRedirect("list");
 
 	}
+	private void listUser(HttpServletRequest request, HttpServletResponse response)
+			throws SQLException, IOException, ServletException {
+		List<User> listUser = userDao.selectAllUsers();
+		request.setAttribute("listUser", listUser);
+		RequestDispatcher dispatcher = request.getRequestDispatcher("user-list.jsp");
+		dispatcher.forward(request, response);
+	}
+	
+	private void showNewUserForm(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		RequestDispatcher dispatcher = request.getRequestDispatcher("user-form.jsp");
+		dispatcher.forward(request, response);
+	}
+
+	private void showEditUserForm(HttpServletRequest request, HttpServletResponse response)
+			throws SQLException, ServletException, IOException {
+		int id = Integer.parseInt(request.getParameter("id"));
+		User existingUser = userDao.selectUser(id);
+		RequestDispatcher dispatcher = request.getRequestDispatcher("user-form.jsp");
+		request.setAttribute("user", existingUser);
+		dispatcher.forward(request, response);
+
+	}
+	
+	private void insertUser(HttpServletRequest request, HttpServletResponse response) 
+			throws SQLException, IOException {
+		String name = request.getParameter("name");
+		String password = request.getParameter("password");
+		String email = request.getParameter("email");
+		User newUser = new User(name, password, email);
+		userDao.insertUser(newUser);
+		response.sendRedirect("listUser");
+	}
+	
+	private void updateUser(HttpServletRequest request, HttpServletResponse response) 
+			throws SQLException, IOException {
+		int id = Integer.parseInt(request.getParameter("id"));
+		String name = request.getParameter("name");
+		String password = request.getParameter("password");
+		String email = request.getParameter("email");
+
+		User book = new User(id, name, password, email);
+		userDao.updateUser(book);
+		response.sendRedirect("listUser");
+	}
+	
+	private void deleteUser(HttpServletRequest request, HttpServletResponse response) 
+			throws SQLException, IOException {
+		int id = Integer.parseInt(request.getParameter("id"));
+		userDao.deleteUser(id);
+		response.sendRedirect("listUser");
+
+	}
+	
+	private void loginWeb(HttpServletRequest request, HttpServletResponse response) 
+			throws SQLException, IOException {
+		
+		String name = request.getParameter("name");
+		String password = request.getParameter("password");
+		Login login = new Login();
+		login.setName(name);
+		login.setPassword(password);
+
+		try {
+			if (loginDao.validate(login)) {
+				response.sendRedirect("listStreamer");
+			} else {
+				response.sendRedirect("loginFail.jsp");
+			}
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	private void sendToLogin(HttpServletRequest request, HttpServletResponse response) 
+			throws SQLException, IOException {
+		response.sendRedirect("login.jsp");
+	}
+	
+	
+		
+	
 	
 	private Integer parseToNumber(String receivedParam)
 	{

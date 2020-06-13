@@ -4,16 +4,21 @@
 	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee 
 		http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
 	id="WebApp_ID" version="3.1">
-	<display-name>Streamer Management Web Application</display-name>
-
+	<display-name>TwitchTrack3r</display-name>
 	<servlet>
-		<servlet-name>TwitchTrack3r</servlet-name>
-		<servlet-class>com.twitchtrack3r.web</servlet-class>
+		<servlet-name>StreamerServlet</servlet-name>
+		<servlet-class>com.twitchtrack3r.web.StreamerServlet</servlet-class>
 	</servlet>
-
-
+	<servlet>
+		<servlet-name>UserServlet</servlet-name>
+		<servlet-class>com.twitchtrack3r.web.UserServlet</servlet-class>
+	</servlet>
 	<servlet-mapping>
-		<servlet-name>TwitchTrack3r</servlet-name>
-		<url-pattern>/TwitchTrack3r</url-pattern>
+		<servlet-name>StreamerServlet</servlet-name>
+		<url-pattern>/twitchtrack3r/streamer</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>UserServlet</servlet-name>
+		<url-pattern>/twitchtrack3r/user</url-pattern>
 	</servlet-mapping>
 </web-app>

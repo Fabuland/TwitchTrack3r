@@ -40,22 +40,15 @@ color:purple;
 			class="navbar navbar-expand-md navbar-dark justify-content-center"
 			style="background-color: black">
 			<div class="mx-5">
-				<a href="<%=request.getContextPath()%>/listStreamer" class="navbar-brand">
+				<a href="<%=request.getContextPath()%>/smListStreamer" class="navbar-brand">
 					<img src="https://i.imgur.com/b5GO8xB.png" alt="logo">
 				</a>
 			</div>
 
 			<ul class="navbar-nav">
-				<li><a href="<%=request.getContextPath()%>/listStreamer"
+				<li><a href="<%=request.getContextPath()%>/smListStreamer"
 					class="nav-link" style="color: white">Streamers<img
 						src="https://i.imgur.com/KTM5Bjk.gif" width="40px" height="40px"
-						class="mx-3"></a></li>
-			</ul>
-			
-			<ul class="navbar-nav">
-				<li><a href="<%=request.getContextPath()%>/listUser"
-					class="nav-link" style="color: white">Users<img
-						src="https://i.imgur.com/qmbb0Tt.gif" width="40px" height="40px"
 						class="mx-3"></a></li>
 			</ul>
 
@@ -76,11 +69,6 @@ color:purple;
 					width="5%" height="5%">
 			</h3>
 			<hr>
-			<div class="container text-left">
-
-				<a href="<%=request.getContextPath()%>/newStreamer" class="btn">Add New
-					Streamer</a>
-			</div>
 			<br>
 			<table id="dtable" class="table table-bordered">
 				<thead class="thead-dark">
@@ -91,7 +79,6 @@ color:purple;
 						<th>Subscribers</th>
 						<th>Followers</th>
 						<th>Category</th>
-						<th>Actions</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -104,11 +91,6 @@ color:purple;
 							<td><c:out value="${streamer.subscribers}" /></td>
 							<td><c:out value="${streamer.followers}" /></td>
 							<td><c:out value="${streamer.category_id}" /></td>
-							<td><a
-								href="<%=request.getContextPath()%>/editStreamer?id=<c:out value='${streamer.id}' />"><i
-									class="fas fa-edit"></i></a> &nbsp;&nbsp;&nbsp;&nbsp; <a
-								href="<%=request.getContextPath()%>/deleteStreamer?id=<c:out value='${streamer.id}' />"><i
-									class="fas fa-minus-circle"></i></a></td>
 						</tr>
 					</c:forEach>
 					<!-- } -->

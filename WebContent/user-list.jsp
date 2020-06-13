@@ -28,6 +28,7 @@ tbody tr.even:hover {
 tbody tr.odd:hover {
 	background-color: #d9b3ff
 }
+
 .fa-edit, .fa-minus-circle{
 color:purple;
 }
@@ -66,20 +67,20 @@ color:purple;
 	<div class="row">
 
 		<div id="img" class="container">
-			<img src="https://i.imgur.com/QClOTfG.png" alt="streams"
+			<img src="https://i.imgur.com/hjER5yP.png" alt="users"
 				class="text-center">
 		</div>
 
 		<div class="container mb-5">
 			<h3 class="text-center" id="prueba">
-				List of Streamers <img src="https://i.imgur.com/PqAdbUP.png"
+				List of Users <img src="https://i.imgur.com/PqAdbUP.png"
 					width="5%" height="5%">
 			</h3>
 			<hr>
 			<div class="container text-left">
 
-				<a href="<%=request.getContextPath()%>/newStreamer" class="btn">Add New
-					Streamer</a>
+				<a href="<%=request.getContextPath()%>/newUser" class="btn">Add New
+					User</a>
 			</div>
 			<br>
 			<table id="dtable" class="table table-bordered">
@@ -87,27 +88,23 @@ color:purple;
 					<tr>
 						<%-- <th>ID</th>--%>
 						<th>Name</th>
-						<th>Online</th>
-						<th>Subscribers</th>
-						<th>Followers</th>
-						<th>Category</th>
+						<th>Password</th>
+						<th>Email</th>
 						<th>Actions</th>
 					</tr>
 				</thead>
 				<tbody>
-					<c:forEach var="streamer" items="${listStreamer}">
+					<c:forEach var="user" items="${listUser}">
 
 						<tr>
-							<%-- <td><c:out value="${streamer.id}" /></td>--%>
-							<td><c:out value="${streamer.name}" /></td>
-							<td><c:out value="${streamer.online}" /></td>
-							<td><c:out value="${streamer.subscribers}" /></td>
-							<td><c:out value="${streamer.followers}" /></td>
-							<td><c:out value="${streamer.category_id}" /></td>
+							<%-- <td><c:out value="${user.id}" /></td>--%>
+							<td><c:out value="${user.name}" /></td>
+							<td><c:out value="${user.password}" /></td>
+							<td><c:out value="${user.email}" /></td>
 							<td><a
-								href="<%=request.getContextPath()%>/editStreamer?id=<c:out value='${streamer.id}' />"><i
+								href="<%=request.getContextPath()%>/editUser?id=<c:out value='${user.id}' />"><i
 									class="fas fa-edit"></i></a> &nbsp;&nbsp;&nbsp;&nbsp; <a
-								href="<%=request.getContextPath()%>/deleteStreamer?id=<c:out value='${streamer.id}' />"><i
+								href="<%=request.getContextPath()%>/deleteUser?id=<c:out value='${user.id}' />"><i
 									class="fas fa-minus-circle"></i></a></td>
 						</tr>
 					</c:forEach>

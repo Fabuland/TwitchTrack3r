@@ -24,15 +24,22 @@
 			class="navbar navbar-expand-md navbar-dark justify-content-center"
 			style="background-color: black">
 			<div class="mx-5">
-				<a href="<%=request.getContextPath()%>/list" class="navbar-brand">
-					<img src="https://i.imgur.com/b5GO8xB.png" alt="logdo">
+				<a href="<%=request.getContextPath()%>/listStreamer" class="navbar-brand">
+					<img src="https://i.imgur.com/b5GO8xB.png" alt="logo">
 				</a>
 			</div>
 
 			<ul class="navbar-nav">
-				<li><a href="<%=request.getContextPath()%>/list"
+				<li><a href="<%=request.getContextPath()%>/listStreamer"
 					class="nav-link" style="color: white">Streamers<img
-						src="https://i.imgur.com/4jPsJhj.gif" width="40px" height="40px"
+						src="https://i.imgur.com/KTM5Bjk.gif" width="40px" height="40px"
+						class="mx-3"></a></li>
+			</ul>
+			
+			<ul class="navbar-nav">
+				<li><a href="<%=request.getContextPath()%>/listUser"
+					class="nav-link" style="color: white">Users<img
+						src="https://i.imgur.com/qmbb0Tt.gif" width="40px" height="40px"
 						class="mx-3"></a></li>
 			</ul>
 
@@ -43,11 +50,11 @@
 		<div class="card">
 			<div class="card-body">
 				<c:if test="${streamer != null}">
-					<form action="<%=request.getContextPath()%>/update" method="post"
+					<form action="<%=request.getContextPath()%>/updateStreamer" method="post"
 						class="needs-validation" novalidate>
 				</c:if>
 				<c:if test="${streamer == null}">
-					<form action="<%=request.getContextPath()%>/insert" method="post"
+					<form action="<%=request.getContextPath()%>/insertStreamer" method="post"
 						class="needs-validation" novalidate>
 				</c:if>
 
@@ -143,6 +150,15 @@
 			</div>
 		</div>
 	</div>
+	<footer class="page-footer font-small blue">
+
+  <!-- Copyright -->
+  <div class="footer-copyright text-center py-3">© 2020 Copyright:
+    <a href="https://twitchtrack3r.com/"> TwitchTrack3r.com</a>
+  </div>
+  <!-- Copyright -->
+
+</footer>
 
 	<script>
 		(function() {
