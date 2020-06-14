@@ -41,7 +41,7 @@ body {
 			
 			<ul class="navbar-nav">
 				<li><a href="<%=request.getContextPath()%>/listUser"
-					class="nav-link" style="color: white">Users<img
+					class="nav-link" style="color: white">Admins<img
 						src="https://i.imgur.com/qmbb0Tt.gif" width="40px" height="40px"
 						class="mx-3"></a></li>
 			</ul>

@@ -58,7 +58,7 @@ body {
 			
 			<ul class="navbar-nav">
 				<li><a href="<%=request.getContextPath()%>/listUser"
-					class="nav-link" style="color: white">Users<img
+					class="nav-link" style="color: white">Admins<img
 						src="https://i.imgur.com/qmbb0Tt.gif" width="40px" height="40px"
 						class="mx-3"></a></li>
 			</ul>
@@ -76,14 +76,14 @@ body {
 
 		<div class="container mb-5">
 			<h3 class="text-center" id="prueba">
-				List of Users <img src="https://i.imgur.com/PqAdbUP.png"
+				List of Admins <img src="https://i.imgur.com/PqAdbUP.png"
 					width="5%" height="5%">
 			</h3>
 			<hr>
 			<div class="container text-left">
 
 				<a href="<%=request.getContextPath()%>/newUser" class="btn">Add New
-					User</a>
+					Admin</a>
 			</div>
 			<br>
 			<table id="dtable" class="table table-bordered">
