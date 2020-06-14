@@ -10,7 +10,12 @@ import com.twitchtrack3r.model.Login;
 
 public class LoginDao {
 	
-	
+	/**
+	 * Valida el usuario y contraseña dadas por un administrador y devuelve true si coinciden con alguna cuenta de la tabla users
+	 * @param login
+	 * @return
+	 * @throws ClassNotFoundException
+	 */
 	public boolean validate(Login login) throws ClassNotFoundException {
 		boolean status = false;
 

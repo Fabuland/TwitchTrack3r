@@ -98,7 +98,7 @@ body {
 				</fieldset>
 
 				<fieldset class="form-group">
-					<label for="subscribers">Streamer Subscribers</label> <input type="number"
+					<label for="subscribers"><span rel="tooltip" title="Subscriptions cost money and gives benefits to the user">Streamer Subscribers</span></label> <input type="number"
 						value="<c:out value='${streamer.subscribers}' />"
 						class="form-control" name="subscribers" required="required" id="subscribers">
 						<div class="valid-feedback">Looks good!</div>
@@ -106,7 +106,7 @@ body {
 				</fieldset>
 
 				<fieldset class="form-group">
-					<label for="followers">Streamer Followers</label> <input type="number"
+					<label for="followers"><span rel="tooltip" title="Following a streamer is free and it lets you know when they are going online">Streamer Followers</span></label> <input type="number"
 						value="<c:out value='${streamer.followers}' />"
 						class="form-control" name="followers" required="required" id="followers">
 						<div class="valid-feedback">Looks good!</div>
@@ -185,6 +185,9 @@ body {
 								});
 					}, false);
 		})();
+		$(function () {
+			  $('[data-toggle="tooltip"]').tooltip()
+			})
 	</script>
 </body>
 </html>

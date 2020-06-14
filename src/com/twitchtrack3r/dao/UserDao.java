@@ -41,7 +41,11 @@ public class UserDao {
 		}
 		return connection;
 	}
-
+	/**
+	 * Crea un nuevo usuario en la base de datos
+	 * @param user
+	 * @throws SQLException
+	 */
 	public void insertUser(User user) throws SQLException {
 		System.out.println(INSERT_USERS_SQL);
 
@@ -56,7 +60,11 @@ public class UserDao {
 			printSQLException(e);
 		}
 	}
-
+	/**
+	 * Selecciona un usuario en concreto de la base de datos
+	 * @param id
+	 * @return
+	 */
 	public User selectUser(int id) {
 		User user = null;
 		try (Connection connection = getConnection();
@@ -75,7 +83,10 @@ public class UserDao {
 		}
 		return user;
 	}
-
+	/**
+	 * Selecciona todos los usuarios de la tabla users
+	 * @return
+	 */
 	public List<User> selectAllUsers() {
 
 		List<User> users = new ArrayList<>();
@@ -100,6 +111,12 @@ public class UserDao {
 		return users;
 	}
 	
+	/**
+	 * Borra un usuario de la tabla users dado un id
+	 * @param id
+	 * @return
+	 * @throws SQLException
+	 */
 	public boolean deleteUser(int id) throws SQLException {
 		boolean rowDeleted;
 		try (Connection connection = getConnection();
@@ -110,6 +127,12 @@ public class UserDao {
 		return rowDeleted;
 	}
 	
+	/**
+	 * Actualiza un usuario de la tabla users dado un id
+	 * @param user
+	 * @return
+	 * @throws SQLException
+	 */
 	public boolean updateUser(User user) throws SQLException {
 		boolean rowUpdated;
 		try (Connection connection = getConnection();

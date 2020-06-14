@@ -142,7 +142,7 @@ public class StreamerServlet extends HttpServlet {
 		System.out.println(name + online + subscribers + followers + category_id);
 		Streamer newStreamer = new Streamer(name, online, subscribers, followers, category_id);
 		streamerDao.insertStreamer(newStreamer);
-		response.sendRedirect("list");
+		response.sendRedirect("listStreamer");
 	}
 
 	private void updateStreamer(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException {
@@ -155,7 +155,7 @@ public class StreamerServlet extends HttpServlet {
 
 		Streamer streamer = new Streamer(id, name, online, subscribers, followers, category_id);
 		streamerDao.updateStreamer(streamer);
-		response.sendRedirect("list");
+		response.sendRedirect("listStreamer");
 	}
 
 	private void deleteStreamer(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException {

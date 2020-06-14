@@ -39,6 +39,11 @@ public class StreamerDao {
 		return connection;
 	}
 
+	/**
+	 * Crea un nuevo streamer en la tabla streamer
+	 * @param streamer
+	 * @throws SQLException
+	 */
 	public void insertStreamer(Streamer streamer) throws SQLException {
 		try (Connection connection = getConnection();
 				PreparedStatement preparedStatement = connection.prepareStatement(insertStreamerSQL)) {
@@ -54,6 +59,12 @@ public class StreamerDao {
 		}
 	}
 
+	/**
+	 * Actualiza los datos de un streamer en la table streamer
+	 * @param streamer
+	 * @return
+	 * @throws SQLException
+	 */
 	public boolean updateStreamer(Streamer streamer) throws SQLException {
 		boolean rowUpdated;
 		try (Connection connection = getConnection();
@@ -70,6 +81,11 @@ public class StreamerDao {
 		return rowUpdated;
 	}
 
+	/**
+	 * Selecciona un streamer en específico de la tabla streamer dado un id
+	 * @param id
+	 * @return
+	 */
 	public Streamer selectStreamer(int id) {
 		Streamer streamer = null;
 
@@ -94,6 +110,10 @@ public class StreamerDao {
 		return streamer;
 	}
 	
+	/**
+	 * Selecciona todos los streamers de la tabla streamer
+	 * @return
+	 */
 	public List<Streamer> selectAllStreamers() {
 
 		List<Streamer> streamers = new ArrayList<>();
@@ -117,6 +137,12 @@ public class StreamerDao {
 		return streamers;
 	}
 	
+	/**
+	 * Elimina un streamer de la tabla streamer dado un id
+	 * @param id
+	 * @return
+	 * @throws SQLException
+	 */
 	public boolean deleteStreamer(int id) throws SQLException {
 		boolean rowDeleted;
 		try (Connection connection = getConnection();
