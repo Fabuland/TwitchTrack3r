@@ -161,7 +161,7 @@ public class StreamerServlet extends HttpServlet {
 	private void deleteStreamer(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException {
 		int id = Integer.parseInt(request.getParameter("id"));
 		streamerDao.deleteStreamer(id);
-		response.sendRedirect("list");
+		response.sendRedirect("listStreamer");
 
 	}
 	private void listUser(HttpServletRequest request, HttpServletResponse response)
